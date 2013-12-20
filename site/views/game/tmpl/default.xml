@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="Game" option="View">
+        <message>
+                        <![CDATA[Frontend Game]]>
+        </message>
+	</layout>
+</metadata>

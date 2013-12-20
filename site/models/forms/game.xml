@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="player">
+
+       <field name="player_1" id="player_1" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,1"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_2" id="player_2" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,2"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_3" id="player_3" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,3"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_4" id="player_4" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,4"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_5" id="player_5" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,5"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_6" id="player_6" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,6"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_7" id="player_7" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,7"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_8" id="player_8" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,8"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+       <field name="player_9" id="player_9" type="player" label="COM_POKERLEAGUE_FORM_LBL_NAME,9"
+              description="JGLOBAL_FIELD_ID_DESC" /> 
+
+  </fieldset> 
+
+</form>

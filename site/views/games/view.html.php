@@ -18,7 +18,7 @@ class PokerleagueViewGame extends JViewLegacy
 	protected $state;
   protected $params;
   protected $type;
-  protected $form;
+  protected $items;
   
   /**
 	 * Display the view
@@ -30,6 +30,7 @@ class PokerleagueViewGame extends JViewLegacy
         $this->type   = $this->get("Type");
         $this->state = $this->get('State');
         $this->params = $app->getParams('com_zldmanager');
+        $this->items = $this->get("Items");
         
         // Check for errors.
         if (count($errors = $this->get('Errors'))) {;
