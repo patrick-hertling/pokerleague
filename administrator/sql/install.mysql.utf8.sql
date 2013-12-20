@@ -2,8 +2,8 @@
 -- Estructura de tabla para la tabla `game`
 --
 
-CREATE TABLE IF NOT EXISTS `game` (
-  `id` int(11) NOT NULL DEFAULT '0',
+CREATE TABLE IF NOT EXISTS `#__pokerleague_game` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` date NOT NULL,
   `pricemoney` decimal(8,2) NOT NULL,
   `player` varchar(128) COLLATE latin1_german2_ci NOT NULL,
@@ -18,13 +18,13 @@ CREATE TABLE IF NOT EXISTS `game` (
 -- Estructura de tabla para la tabla `player`
 --
 
-CREATE TABLE IF NOT EXISTS `player` (
+CREATE TABLE IF NOT EXISTS `#__pokerleague_player` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `users_id` int(11) NOT NULL,
-  `name` int(11) NOT NULL,
-  `img_path` int(11) DEFAULT NULL,
-  `creation_date` int(11) NOT NULL,
-  `modification_date` tinyint(4) DEFAULT NULL,
+  `name` varchar(32) COLLATE latin1_german2_ci NOT NULL,
+  `img_path` varchar(128) COLLATE latin1_german2_ci DEFAULT NULL,
+  `creation_date` date NOT NULL,
+  `modification_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `state` int(11) NOT NULL,
   `ordering` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `player` (
 -- Estructura de tabla para la tabla `result`
 --
 
-CREATE TABLE IF NOT EXISTS `result` (
+CREATE TABLE IF NOT EXISTS `#__pokerleague_result` (
   `player_id` int(11) NOT NULL,
   `game_id` int(11) NOT NULL,
   `buyin_nr` int(11) NOT NULL,
@@ -57,6 +57,6 @@ CREATE TABLE IF NOT EXISTS `result` (
 --
 -- Filtros para la tabla `result`
 --
-ALTER TABLE `result`
+ALTER TABLE `#__pokerleague_result`
   ADD CONSTRAINT `result_ibfk_2` FOREIGN KEY (`game_id`) REFERENCES `game` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `result_ibfk_1` FOREIGN KEY (`player_id`) REFERENCES `player` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
