@@ -31,31 +31,18 @@ class PokerleagueModelGame extends JModelForm
 	{
 		$app = JFactory::getApplication();
 
-		// Load state from the request userState on edit or from the passed variable on default
-        if ($app->input->get('layout') == 'edit') {
-            $id = $app->getUserState('com_zldmanager.edit.zulassungsstelle.id');
-        } else {
-            $id = $app->input->get('id');
-            JFactory::getApplication()->setUserState('com_zldmanager.edit.zulassungsstelle.id', $id);
-        }
-		$this->setState('zulassungsstelle.id', $id);
+    $id = $app->getInput()->get("id", null, "INT");
+		$this->setState('game.id', $id);
 
 		// Load the parameters.
-        $params = $app->getParams();
-        $params_array = $params->toArray();
-        if(isset($params_array['item_id'])){
-            $this->setState('zulassungsstelle.id', $params_array['item_id']);
-        }
+    $params = $app->getParams();
 		$this->setState('params', $params);
-
 	}
         
-
 	/**
 	 * Method to get an ojbect.
 	 *
 	 * @param	integer	The id of the object to get.
-	 *
 	 * @return	mixed	Object on success, false on failure.
 	 */
 	public function &getData($id = null)
@@ -65,7 +52,7 @@ class PokerleagueModelGame extends JModelForm
 			$this->_item = false;
 
 			if (empty($id)) {
-				$id = $this->getState('zulassungsstelle.id');
+				$id = $this->getState('game.id');
 			}
 
 			// Get a level row instance.
@@ -74,17 +61,16 @@ class PokerleagueModelGame extends JModelForm
 			// Attempt to load the row.
 			if ($table->load($id))
 			{
-                
-                $user = JFactory::getUser();
-                $id = $table->id;
-                $canEdit = $user->authorise('core.edit', 'com_zldmanager') || $user->authorise('core.create', 'com_zldmanager');
-                if (!$canEdit && $user->authorise('core.edit.own', 'com_zldmanager')) {
-                    $canEdit = $user->id == $table->created_by;
-                }
+        $user = JFactory::getUser();
+        $id = $table->id;
+        $canEdit = $user->authorise('core.edit', 'com_pokerleague') || $user->authorise('core.create', 'com_pokerleague');
+        if (!$canEdit && $user->authorise('core.edit.own', 'com_pokerleague')) {
+            $canEdit = $user->id == $table->created_by;
+        }
 
-                if (!$canEdit) {
-                    JError::raiseError('500', JText::_('JERROR_ALERTNOAUTHOR'));
-                }
+        if (!$canEdit) {
+            JError::raiseError('500', JText::_('JERROR_ALERTNOAUTHOR'));
+        }
                 
 				// Check published state.
 				if ($published = $this->getState('filter.published'))
@@ -107,8 +93,8 @@ class PokerleagueModelGame extends JModelForm
     
 	public function getTable($type = 'Game', $prefix = 'PokerleagueTable', $config = array())
 	{   
-        $this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
-        return JTable::getInstance($type, $prefix, $config);
+    $this->addTablePath(JPATH_COMPONENT_ADMINISTRATOR.'/tables');
+    return JTable::getInstance($type, $prefix, $config);
 	}     
 
     
@@ -119,8 +105,8 @@ class PokerleagueModelGame extends JModelForm
 	 * @return	boolean		True on success, false on failure.
 	 * @since	1.6
 	 */
-	public function checkin($id = null)
-	{
+	public function checkin($id = null)	{
+    
 		// Get the id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('zulassungsstelle.id');
 
@@ -148,8 +134,8 @@ class PokerleagueModelGame extends JModelForm
 	 * @return	boolean		True on success, false on failure.
 	 * @since	1.6
 	 */
-	public function checkout($id = null)
-	{
+	public function checkout($id = null)	{
+    
 		// Get the user id.
 		$id = (!empty($id)) ? $id : (int)$this->getState('zulassungsstelle.id');
 
@@ -186,7 +172,7 @@ class PokerleagueModelGame extends JModelForm
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Get the form.
-		$form = $this->loadForm('com_zldmanager.zulassungsstelle', 'zulassungsstelleform', array('control' => 'jform', 'load_data' => $loadData));
+		$form = $this->loadForm('pokerleague', 'pokerleague', array('load_data' => $loadData));
 		if (empty($form)) {
 			return false;
 		}
@@ -200,14 +186,9 @@ class PokerleagueModelGame extends JModelForm
 	 * @return	mixed	The data for the form.
 	 * @since	1.6
 	 */
-	protected function loadFormData()
-	{
-		$data = JFactory::getApplication()->getUserState('com_zldmanager.edit.zulassungsstelle.data', array());
-        if (empty($data)) {
-            $data = $this->getData();
-        }
+	protected function loadFormData() {
         
-        return $data;
+    return $this->getData();
 	}
 
 	/**
@@ -248,7 +229,6 @@ class PokerleagueModelGame extends JModelForm
         } else {
             return false;
         }
-        
 	}
     
 }
