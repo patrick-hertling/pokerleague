@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 /**
  * player Table class
  */
-class PokerleagueTableplayer extends JTable {
+class PokerleagueTablePlayer extends JTable {
 
     /**
      * Constructor
