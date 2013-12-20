@@ -6,7 +6,6 @@
     <license>Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt</license>
     <author>Patrick Hertling</author>
     <authorEmail>patrickhertling@gmail.com</authorEmail>
-    <authorUrl>http://</authorUrl>
     <version>1.0.0</version>
     <description>Joomla component for the management of a pokerleague.</description>
     
@@ -32,7 +31,6 @@
         <folder>helpers</folder>
     </files>
     <languages folder="site">
-        
 			<language tag="de-DE">language/de-DE.com_pokerleague.ini</language>
     </languages>
     <administration>
@@ -63,5 +61,3 @@
         </languages>
     </administration>
 </extension>
-<!-- Component built by the Joomla Component Creator -->
-<!-- http://www.notwebdesign.com/joomla-component-creator/ -->
